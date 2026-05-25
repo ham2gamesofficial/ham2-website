@@ -18,31 +18,11 @@ function closeMenu() {
   document.getElementById('mobile-menu').classList.remove('open');
 }
 
-// ── EMAILJS CONFIG SAVE/LOAD ──
-function saveEJS() {
-  const k = document.getElementById('ejs-key').value.trim();
-  const s = document.getElementById('ejs-svc').value.trim();
-  const t = document.getElementById('ejs-tpl').value.trim();
-  if (k && s && t) {
-    localStorage.setItem('ejs_key', k);
-    localStorage.setItem('ejs_svc', s);
-    localStorage.setItem('ejs_tpl', t);
-    emailjs.init(k);
-    showMsg('✓ Ayarlar kaydedildi!', false);
-    setTimeout(() => showMsg('', false), 2000);
-  } else {
-    showMsg('⚠ Tüm alanları doldurun.', true);
-  }
-}
-
-function loadEJS() {
-  const k = localStorage.getItem('ejs_key');
-  const s = localStorage.getItem('ejs_svc');
-  const t = localStorage.getItem('ejs_tpl');
-  if (k) { document.getElementById('ejs-key').value = k; emailjs.init(k); }
-  if (s) document.getElementById('ejs-svc').value = s;
-  if (t) document.getElementById('ejs-tpl').value = t;
-}
+// ── EMAILJS CONFIG (hardcoded) ──
+const EJS_KEY = 'HVIO89-UZ-jJnItd1';
+const EJS_SVC = 'service_mkf8u0j';
+const EJS_TPL = 'template_asxjftw';
+emailjs.init(EJS_KEY);
 
 function showMsg(text, isErr) {
   const el = document.getElementById('form-msg');
@@ -56,19 +36,13 @@ async function sendEmail() {
   const email   = document.getElementById('f-email').value.trim();
   const subject = document.getElementById('f-subject').value;
   const msg     = document.getElementById('f-msg').value.trim();
-  const svc     = localStorage.getItem('ejs_svc');
-  const tpl     = localStorage.getItem('ejs_tpl');
-
   if (!name || !email || !msg) {
     showMsg('⚠ Lütfen tüm alanları doldurun.', true); return;
-  }
-  if (!svc || !tpl) {
-    showMsg('⚠ Önce EmailJS ayarlarını kaydedin.', true); return;
   }
 
   showMsg('Gönderiliyor...', false);
   try {
-    await emailjs.send(svc, tpl, {
+    await emailjs.send(EJS_SVC, EJS_TPL, {
       from_name:  name,
       from_email: email,
       subject:    subject || 'Genel Soru',
@@ -249,4 +223,4 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // ── INIT ──
-window.addEventListener('load', loadEJS);
+// EmailJS hardcoded — no setup needed
