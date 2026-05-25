@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAM2 — Game Development Studio</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><text x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='14' font-weight='700' font-family='monospace'>H2</text></svg>">
+</head>
+<body>
+
+<!-- CANVAS BACKGROUND -->
+<canvas id="canvas-bg"></canvas>
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav id="navbar">
+  <a class="nav-logo" href="#home">HAM<span>2</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Ana Sayfa</a></li>
+    <li><a href="#projects">Projeler</a></li>
+    <li><a href="#about">Hakkımızda</a></li>
+    <li><a href="#contact">İletişim</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()">☀ IŞIK</button>
+    <a class="nav-cta" href="#contact">Projeye Başla →</a>
+    <button class="burger" id="burger" onclick="toggleMenu()">☰</button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#home" onclick="closeMenu()">Ana Sayfa</a>
+  <a href="#projects" onclick="closeMenu()">Projeler</a>
+  <a href="#about" onclick="closeMenu()">Hakkımızda</a>
+  <a href="#contact" onclick="closeMenu()">İletişim</a>
+</div>
+
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+<section id="home" class="hero-section">
+  <div class="container hero-inner">
+
+    <div class="hero-badge reveal">
+      <span class="pulse-dot"></span> Aktif Geliştirme Sürecinde
+    </div>
+
+    <h1 class="hero-title reveal">OYUN</h1>
+    <p class="hero-sub reveal">DÜNYASI</p>
+    <p class="hero-desc reveal">
+      HAM2 olarak sınırları zorlayan, oyunculara unutulmaz deneyimler yaşatan oyunlar geliştiriyoruz.
+      Mobil'den konsola, indie'den AAA'ya.
+    </p>
+
+    <div class="hero-btns reveal">
+      <a class="btn-primary" href="#projects">Projelerimizi Gör</a>
+      <a class="btn-secondary" href="#contact">Bizimle Çalış</a>
+    </div>
+
+    <!-- ── 3D DEVICES SCENE ── -->
+    <div class="devices-scene reveal">
+      <div class="scene-3d">
+
+        <!-- CONSOLE -->
+        <div class="console-3d">
+          <div class="console-body">
+            <div class="dpad">
+              <div class="dpad-h"></div>
+              <div class="dpad-v"></div>
+            </div>
+            <div class="console-screen">
+              <div class="console-scanline"></div>
+              <div class="console-score">HAM2 · SCORE: 99999</div>
+              <div class="console-bars">
+                <div class="cbar" style="height:50%"></div>
+                <div class="cbar" style="height:70%"></div>
+                <div class="cbar" style="height:90%"></div>
+                <div class="cbar" style="height:60%"></div>
+                <div class="cbar" style="height:45%"></div>
+              </div>
+            </div>
+            <div class="btns-cluster">
+              <div style="width:12px"></div><div class="gbtn gbtn-y"></div>
+              <div class="gbtn gbtn-x"></div><div class="gbtn gbtn-b"></div>
+              <div style="width:12px"></div><div class="gbtn gbtn-a"></div>
+            </div>
+            <div class="speaker">
+              <div class="sp-dot"></div><div class="sp-dot"></div>
+              <div class="sp-dot"></div><div class="sp-dot"></div><div class="sp-dot"></div>
+            </div>
+          </div>
+          <div class="console-shadow"></div>
+        </div>
+
+        <!-- PHONE -->
+        <div class="phone-3d">
+          <div class="phone-body">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="phone-game">
+                <div class="phone-label">HAM2</div>
+                <div class="phone-game-grid">
+                  <div class="pxl pxl-r"></div><div class="pxl pxl-g"></div>
+                  <div class="pxl pxl-b"></div><div class="pxl pxl-y"></div>
+                  <div class="pxl pxl-y"></div><div class="pxl pxl-r"></div>
+                  <div class="pxl pxl-g"></div><div class="pxl pxl-b"></div>
+                  <div class="pxl pxl-b"></div><div class="pxl pxl-y"></div>
+                  <div class="pxl pxl-r"></div><div class="pxl pxl-g"></div>
+                </div>
+                <div class="phone-level">LEVEL 7 · ★★★</div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-side">
+            <div class="phone-btn"></div>
+            <div class="phone-btn2"></div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /devices-scene -->
+
+    <!-- STATS -->
+    <div class="hero-stats reveal">
+      <div class="stat">
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Tamamlanan Oyun</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">1M+</div>
+        <div class="stat-label">Oyuncu</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Platform</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Yıl Tecrübe</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════ PROJECTS ═══════════════════════════ -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <!-- <p class="section-tag">Portföy</p>
+      <h2 class="section-title">Geliştirdiğimiz <span>Oyunlar</span></h2> -->
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- <div class="project-card reveal">
+        <div class="project-thumb">
+          <canvas id="c1" width="400" height="180"></canvas>
+          <span class="project-genre">Action RPG</span>
+          <span class="project-status status-live">● Yayında</span>
+        </div>
+        <div class="project-info">
+          <div class="project-title">Dark Protocol</div>
+          <div class="project-desc">Distopik bir gelecekte geçen, derin hikaye anlatımı ve hızlı aksiyon sahneleriyle dolu RPG macerası.</div>
+          <div class="project-tags">
+            <span class="project-tag">Unity</span>
+            <span class="project-tag">PC/Console</span>
+            <span class="project-tag">Singleplayer</span>
+          </div>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-thumb">
+          <canvas id="c2" width="400" height="180"></canvas>
+          <span class="project-genre">Battle Royale</span>
+          <span class="project-status status-live">● Yayında</span>
+        </div>
+        <div class="project-info">
+          <div class="project-title">Neon Clash</div>
+          <div class="project-desc">100 oyunculu, neon şehirlerinde geçen rekabetçi çok oyunculu battle royale deneyimi.</div>
+          <div class="project-tags">
+            <span class="project-tag">Unreal 5</span>
+            <span class="project-tag">Multiplayer</span>
+            <span class="project-tag">Mobile/PC</span>
+          </div>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-thumb">
+          <canvas id="c3" width="400" height="180"></canvas>
+          <span class="project-genre">Puzzle Adventure</span>
+          <span class="project-status status-dev">◐ Geliştiriliyor</span>
+        </div>
+        <div class="project-info">
+          <div class="project-title">Void Walker</div>
+          <div class="project-desc">Boyutlar arası geçiş mekanikleriyle dolu, zihni zorlayan atmosferik puzzle macerası.</div>
+          <div class="project-tags">
+            <span class="project-tag">Godot</span>
+            <span class="project-tag">Indie</span>
+            <span class="project-tag">VR Uyumlu</span>
+          </div>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-thumb">
+          <canvas id="c4" width="400" height="180"></canvas>
+          <span class="project-genre">Hyper Casual</span>
+          <span class="project-status status-soon">○ Yakında</span>
+        </div>
+        <div class="project-info">
+          <div class="project-title">Stack Rush</div>
+          <div class="project-desc">Minimalist tasarım, maksimum eğlence. Milyonlara ulaşmak için tasarlanmış hyper casual mobil oyun.</div>
+          <div class="project-tags">
+            <span class="project-tag">Mobile</span>
+            <span class="project-tag">iOS/Android</span>
+            <span class="project-tag">F2P</span>
+          </div>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+      <div class="project-card project-card--wide reveal">
+        <div class="project-thumb" style="height:220px">
+          <canvas id="c5" width="800" height="220"></canvas>
+          <span class="project-genre">Open World MMO</span>
+          <span class="project-status status-dev">◐ Geliştiriliyor</span>
+        </div>
+        <div class="project-info">
+          <div class="project-title">Horizon Break — Flagship Projemiz</div>
+          <div class="project-desc">HAM2'nin en büyük ve en hırslı projesi. Prosedürel oluşturulan açık dünya, derin ekonomi sistemi ve canlı online ekosistemi ile gelecek nesil MMO deneyimi.</div>
+          <div class="project-tags">
+            <span class="project-tag">Unreal 5</span>
+            <span class="project-tag">PC/Console</span>
+            <span class="project-tag">MMO</span>
+            <span class="project-tag">Cross-platform</span>
+            <span class="project-tag">2026</span>
+          </div>
+        </div> -->
+        <div class="project-arrow">→</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════ ABOUT ═══════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="reveal">
+        <p class="section-tag">Biz Kimiz</p>
+        <h2 class="section-title" style="margin-bottom:20px">Hayalden,<br><span>koda</span></h2>
+        <p class="about-text">HAM2, 2021'dan bu yana bağımsız oyun geliştirme alanında yenilikçi projeler üretmektedir. Ekibimiz tutkulu geliştiriciler, sanatçılar ve hikaye yazarlarından oluşmaktadır.</p>
+        <p class="about-text">Küçük ölçekli mobile oyunlardan büyük bütçeli konsol projelerine kadar geniş bir yelpazede çalışıyor; her projede oyuncu deneyimini en üst düzeye taşımayı hedefliyoruz.</p>
+
+        <div class="about-features">
+          <div class="feature-item reveal">
+            <div class="feature-icon">🎮</div>
+            <div class="feature-title">Çok Platform</div>
+            <div class="feature-desc">PC, konsol, mobil ve VR dahil tüm platformlara geliştirme</div>
+          </div>
+          <div class="feature-item reveal">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-title">Hızlı İterasyon</div>
+            <div class="feature-desc">Agile metodoloji ile hızlı prototipleme ve yayına çıkış</div>
+          </div>
+          <div class="feature-item reveal">
+            <div class="feature-icon">🌐</div>
+            <div class="feature-title">Online Altyapı</div>
+            <div class="feature-desc">Milyonlarca oyuncuyu destekleyen ölçeklenebilir sistemler</div>
+          </div>
+          <div class="feature-item reveal">
+            <div class="feature-icon">🏆</div>
+            <div class="feature-title">Dünya Çapında Ödüller</div>
+            <div class="feature-desc">Dünya çapında tanınmış ödüller</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-visual reveal">
+        <div class="about-ring r1"><div class="orbit-dot"></div></div>
+        <div class="about-ring r2"><div class="orbit-dot orbit-dot--green"></div></div>
+        <div class="about-ring r3"><div class="orbit-dot orbit-dot--blue"></div></div>
+        <div class="about-core">H2</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════ CONTACT ═══════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+
+      <!-- INFO -->
+      <div class="reveal">
+        <p class="section-tag">İletişim</p>
+        <h2 class="contact-title">Projenizi<br><span>hayata geçirelim</span></h2>
+        <p class="contact-sub">Yeni bir oyun geliştirmek mi istiyorsunuz? Mevcut projenize destek mi arıyorsunuz? Bizimle iletişime geçin, birlikte konuşalım.</p>
+        <div class="contact-links">
+          <div class="contact-link">
+            <div class="contact-link-icon">📧</div>
+            <span>ham2gamesofficial@gmail.com</span>
+          </div>
+          <div class="contact-link">
+            <div class="contact-link-icon">📍</div>
+            <span>İstanbul, Türkiye</span>
+          </div>
+          <div class="contact-link">
+            <!-- <div class="contact-link-icon">💼</div>
+            <span>LinkedIn: /company/ham2studio</span> -->
+          </div>
+          <div class="contact-link">
+            <!-- <div class="contact-link-icon">🐦</div>
+            <span>Twitter/X: @HAM2Studio</span> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="reveal">
+        <div class="form-card">
+          <div class="form-header">
+            <div class="form-header-title">Mesaj Gönderin</div>
+            <div class="form-header-sub">Anında iletilir. 24 saat içinde dönüş yapılır.</div>
+          </div>
+
+          <div class="form-2col">
+            <div class="form-row">
+              <label for="f-name">İsim</label>
+              <input type="text" id="f-name" placeholder="Adınız Soyadınız">
+            </div>
+            <div class="form-row">
+              <label for="f-email">E-posta</label>
+              <input type="email" id="f-email" placeholder="email@ornek.com">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="f-subject">Konu</label>
+            <select id="f-subject">
+              <option value="">Konu seçin...</option>
+              <option value="Yeni Proje">Yeni Proje Teklifi</option>
+              <option value="Işbirliği">İş Birliği</option>
+              <option value="Kariyer">Kariyer / İş Başvurusu</option>
+              <option value="Destek">Teknik Destek</option>
+              <option value="Diger">Diğer</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="f-msg">Mesaj</label>
+            <textarea id="f-msg" placeholder="Projeniz veya talebiniz hakkında detayları paylaşın..."></textarea>
+          </div>
+
+          <button class="submit-btn" onclick="sendEmail()">Gönder →</button>
+          <div class="form-msg" id="form-msg"></div>
+
+          <!-- EmailJS Config Panel -->
+          <div class="ejs-config">
+            <div class="ejs-config-title">⚙ EmailJS Ayarları (bir kere girin, tarayıcıda saklanır)</div>
+            <div class="form-2col">
+              <div class="form-row" style="margin-bottom:10px">
+                <label style="font-size:10px">Public Key</label>
+                <input type="text" id="ejs-key" placeholder="YOUR_PUBLIC_KEY">
+              </div>
+              <div class="form-row" style="margin-bottom:10px">
+                <label style="font-size:10px">Service ID</label>
+                <input type="text" id="ejs-svc" placeholder="service_xxxxxxx">
+              </div>
+            </div>
+            <div class="form-row" style="margin-bottom:10px">
+              <label style="font-size:10px">Template ID</label>
+              <input type="text" id="ejs-tpl" placeholder="template_xxxxxxx">
+            </div>
+            <button class="ejs-save-btn" onclick="saveEJS()">Kaydet</button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer>
+  <div class="footer-logo">HAM<span>2</span></div>
+  <div class="footer-text">© 2026 HAM2 Game Studio. Tüm hakları saklıdır.</div>
+  <div class="footer-links">
+    <a href="#home">Ana Sayfa</a>
+    <a href="#projects">Projeler</a>
+    <a href="#about">Hakkımızda</a>
+    <a href="#contact">İletişim</a>
+  </div>
+</footer>
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
