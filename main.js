@@ -22,12 +22,18 @@ function closeMenu() {
 const EJS_KEY = 'HVIO89-UZ-jJnItd1';
 const EJS_SVC = 'service_mkf8u0j';
 const EJS_TPL = 'template_asxjftw';
-emailjs.init(EJS_KEY);
+
+// EmailJS v4 başlatma formatı
+emailjs.init({
+  publicKey: EJS_KEY,
+});
 
 function showMsg(text, isErr) {
   const el = document.getElementById('form-msg');
-  el.textContent = text;
-  el.className = 'form-msg' + (isErr ? ' err' : '');
+  if (el) {
+    el.textContent = text;
+    el.className = 'form-msg' + (isErr ? ' err' : '');
+  }
 }
 
 // ── SEND EMAIL ──
@@ -36,6 +42,7 @@ async function sendEmail() {
   const email   = document.getElementById('f-email').value.trim();
   const subject = document.getElementById('f-subject').value;
   const msg     = document.getElementById('f-msg').value.trim();
+  
   if (!name || !email || !msg) {
     showMsg('⚠ Lütfen tüm alanları doldurun.', true); return;
   }
@@ -56,6 +63,7 @@ async function sendEmail() {
     document.getElementById('f-msg').value     = '';
   } catch (e) {
     showMsg('✗ Gönderilemedi...', true);
+    console.error('EmailJS Hatası:', e);
   }
 }
 
@@ -67,6 +75,7 @@ const symbols = ['▲','▼','◆','●','★','✦','⬡','⬟','□','△','�
 const colors  = ['#ffffff','#4eff91','#6496ff','#ff6464','#ffdd44'];
 
 function initParticles() {
+  if (!bg) return;
   bg.width  = window.innerWidth;
   bg.height = window.innerHeight;
   particles = [];
@@ -87,6 +96,7 @@ function initParticles() {
 }
 
 function animParticles() {
+  if (!bg || !bctx) return;
   bctx.clearRect(0, 0, bg.width, bg.height);
   particles.forEach(p => {
     bctx.save();
@@ -221,6 +231,3 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// ── INIT ──
-// EmailJS hardcoded — no setup needed
