@@ -55,7 +55,7 @@ async function sendEmail() {
     document.getElementById('f-subject').value = '';
     document.getElementById('f-msg').value     = '';
   } catch (e) {
-    showMsg('✗ Gönderilemedi. EmailJS ayarlarını kontrol edin.', true);
+    showMsg('✗ Gönderilemedi...', true);
   }
 }
 
